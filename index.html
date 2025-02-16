@@ -13,9 +13,30 @@
     </button>
     <button class="answerButton" id="noButton">I no no wanna o(╥﹏╥)o</button>
     <br />
-    <img src="please.png" height="498px" width="150px" alt="cat asking question" class="responsive" />
+    <img src="kittycute.jpg" height="300px" width="150px" alt="cat asking question" class="responsive" />
 
     <script>
+      let currentAudio = null;
+      window.addEventListener("DOMContentLoaded", function () {
+    currentAudio = document.getElementById("default");
+  });
+
+      function playAudio(audioID) {
+        let audio = document.getElementById(audioID);
+        
+
+        if (currentAudio && currentAudio !== audio) {
+          currentAudio.pause();
+        }
+
+        if (audio.paused) {
+          audio.play();
+          currentAudio = audio;
+          
+        } else {
+          //dont do anything
+        }
+      }
       document
         .getElementById("noButton")
         .addEventListener("click", function () {
@@ -26,7 +47,20 @@
             window.getComputedStyle(yesButton).fontSize
           );
           yesButton.style.fontSize = currentFontSize + 10 + "px"; // Increase font size by 5px
+          
+
+          playAudio("sad")
         });
+        
     </script>
+
+    <audio id="default" autoplay loop>
+      <source src="aptmeow.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <audio id="sad" loop>
+      <source src="meowsad.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
   </body>
 </html>
